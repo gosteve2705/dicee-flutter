@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,12 +34,15 @@ class _DicePageState extends State<DicePage> {
         children: <Widget>[
           Expanded(
             child: FlatButton(
+              onPressed: () {
+                print('left button pressed');
+                setState(() {
+                  leftDiceNum = Random().nextInt(6) + 1;
+                });
+              },
               child: Image(
                 image: AssetImage('images/dice$leftDiceNum.png'),
               ),
-              onPressed: () {
-                print('left button pressed');
-              },
             ),
           ),
           Expanded(
@@ -47,6 +52,9 @@ class _DicePageState extends State<DicePage> {
               ),
               onPressed: () {
                 print('Right button pressed');
+                setState(() {
+                  rightDiceNum = Random().nextInt(6) + 1;
+                });
               },
             ),
           ),
